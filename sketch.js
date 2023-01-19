@@ -168,6 +168,10 @@ function raindrop(
           this.y = (this.y + drops[i].y)/2;
           drops[i].r = 0;
           toRemove.push(i);
+        }
+      }
+    }
+  }
 //           //if this drop is smaller than the other drop
 //           if (this.r < drops[i].r) {
 //             //the other drop adds this drop's area to its area
@@ -203,10 +207,10 @@ function raindrop(
 // //               this.y += yMove;
 // //               this.distMovedy += yMove;
 // //             }
-          }
-        }
-      }
-    }
+//           }
+//         }
+//       }
+//     }
 
   this.updateLocation = function() {
     if (this.r > maxRadius) {
