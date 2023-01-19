@@ -54,7 +54,7 @@ function draw() {
   if( displayText) {
     fill(0);
     textSize(windowHeight / 10);
-    textInstructions, windowWidth/2, windowHeight/2);
+    text(textInstructions, windowWidth/2, windowHeight/2);
     print(textInstructions);
   }
 
