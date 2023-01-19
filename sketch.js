@@ -167,7 +167,8 @@ function raindrop(
           //if this drop is smaller than the other drop
           if (this.r < drops[i].r) {
             //the other drop adds this drop's area to its area
-            drops[i].r = sqrt(this.r*this.r + drops[i].r*drops[i].r);
+//             drops[i].r = sqrt(this.r*this.r + drops[i].r*drops[i].r);
+            drops[i].r += this.r;
             //this drop's radius becomes zero
             this.r = 0;
             toRemove.push(drops.indexOf(this));
@@ -183,7 +184,8 @@ function raindrop(
             }
           } else {
             //this drop adds the other drop to its area
-            this.r = sqrt(this.r*this.r + drops[i].r*drops[i].r);
+//             this.r = sqrt(this.r*this.r + drops[i].r*drops[i].r);
+            this.r += drops[i].r;
             //this drop's radius becomes zero
             drops[i].r = 0;
             toRemove.push(i);
