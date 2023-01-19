@@ -232,7 +232,6 @@ function raindrop(
       toRemove.push(drops.indexOf(this));
     }
   }
-}
 
 //   this.update = function() {
 
