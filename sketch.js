@@ -200,7 +200,7 @@ function raindrop(
 //               let yMove = (drops[i].r*drops[i].y + this.r * this.y) / ( drops[i].r + this.r);
 //               this.y += yMove;
 //               this.distMovedy += yMove;
-            }
+//             }
           }
         } 
       }      
