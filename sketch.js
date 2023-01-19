@@ -80,11 +80,7 @@ function draw() {
   //     print("\N Location Cylcle. Num Drops:" + drops.length); 
     }
 
-    for(let i = 0; i < toRemove.length; i++) {
-      drops.splice(toRemove[i], 1);
-    }
 
-    toRemove = [];
   }
   for (let drop of drops) {
     // draw the drop
@@ -166,11 +162,14 @@ function raindrop(
           this.r = d/2;
           this.x = (this.x + drops[i].x)/2;
           this.y = max(this.y, (this.y + drops[i].y)/2);
-          drops[i].r = 0;
           toRemove.push(i);
         }
       }
     }
+    for(let i = 0; i < toRemove.length; i++) {
+      drops.splice(toRemove[i], 1);
+    }
+    toRemove = [];
   }
 //           //if this drop is smaller than the other drop
 //           if (this.r < drops[i].r) {
