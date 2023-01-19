@@ -165,7 +165,7 @@ function raindrop(
         if (d < 2*(this.r + drops[i].r)) {
           this.r = d/2;
           this.x = (this.x + drops[i].x)/2;
-          this.y = (this.y + drops[i].y)/2;
+          this.y = max(this.y, (this.y + drops[i].y)/2);
           drops[i].r = 0;
           toRemove.push(i);
         }
