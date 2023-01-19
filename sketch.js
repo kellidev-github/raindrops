@@ -316,7 +316,7 @@ function makeFilter() {
           0,
           noise(i / 3, j / 3, (i * j) / 50) * random(5, 15)
         )
-      );
+      )
     }
   }
   overAllTexture.updatePixels();
