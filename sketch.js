@@ -50,7 +50,7 @@ function mousePressed() {
 
 function draw() {
   //fill in watercolor paper bg to full window size
-  background(10);
+  background(250);
   if( displayText) {
     fill(0);
     textSize(windowHeight / 10);
