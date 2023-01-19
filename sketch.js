@@ -81,9 +81,9 @@ function draw() {
   //     print("\N Location Cylcle. Num Drops:" + drops.length); 
     }
 
-    for(let i = 0; i < toRemove.length; i++) {
-      drops.splice(toRemove[i], 1);
-    }
+//     for(let i = 0; i < toRemove.length; i++) {
+//       drops.splice(toRemove[i], 1);
+//     }
 
     toRemove = [];
   }
