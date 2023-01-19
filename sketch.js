@@ -159,15 +159,13 @@ function raindrop(
     for (let i = 0; i < drops.length; i++) {
       //compare the location of all other drops to this drop
       if (i != drops.indexOf(this)) {
-//         print("This index: " + drops.indexOf(this) + " Other index: " + i);
-//         //calculate the distance between the center of the drops minus some overlap buffer
+        //calculate the distance between the center of the drops minus some overlap buffer
         var d = dist(this.x, this.y, drops[i].x, drops[i].y) - dropOverlap;
-//         print("Distance: " + d);
 
-//         // drops overlap if the distance between their centers is less than the sum of their radii
+        // drops overlap if the distance between their centers is less than the sum of their radii
         if (d < this.r + drops[i].r) {
-          print("OVERLAP OVERLAP OVERLAP OVERLAP OVERLAP OVERLAP OVERLAP OVERLAP OVERLAP OVERLAP OVERLAP OVERLAP OVERLAP OVERLAP OVERLAP");
-//           //if this drop is smaller than the other drop
+
+          //if this drop is smaller than the other drop
           if (this.r < drops[i].r) {
             //the other drop adds this drop's area to its area
             drops[i].r = sqrt(this.r*this.r + drops[i].r*drops[i].r);
@@ -183,9 +181,7 @@ function raindrop(
 //               let yMove = (drops[i].r*drops[i].y + this.r * this.y) / ( drops[i].r + this.r);
 //               drops[i].y += yMove;
 //               drops[i].distMovedy += yMove;
-            }
-            break;
-          } else {
+            } else {
             //this drop adds the other drop to its area
             this.r = sqrt(this.r*this.r + drops[i].r*drops[i].r);
             //this drop's radius becomes zero
@@ -200,12 +196,10 @@ function raindrop(
 //               let yMove = (drops[i].r*drops[i].y + this.r * this.y) / ( drops[i].r + this.r);
 //               this.y += yMove;
 //               this.distMovedy += yMove;
-//             }
-          }
-        } 
-      }      
+            }
+        }
+      }
     }
-  }
 
   this.updateLocation = function() {
     if (this.r > maxRadius) {
@@ -227,6 +221,7 @@ function raindrop(
       toRemove.push(drops.indexOf(this));
     }
   }
+}
 
 //   this.update = function() {
 
