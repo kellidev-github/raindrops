@@ -173,14 +173,14 @@ function raindrop(
             this.r = 0;
             toRemove.push(drops.indexOf(this));
 
-//             let newX = (drops[i].r*drops[i].x + this.r * this.x) / ( drops[i].r + this.r);
-//             drops[i].xMoved += (newX - drops[i].x);
-//             drops[i].x = newX;
+            let newX = (drops[i].r*drops[i].x + this.r * this.x) / ( drops[i].r + this.r);
+            drops[i].xMoved += (newX - drops[i].x);
+            drops[i].x = newX;
 
-//             if (drops[i].y < this.y) {
-//               let yMove = (drops[i].r*drops[i].y + this.r * this.y) / ( drops[i].r + this.r);
-//               drops[i].y += yMove;
-//               drops[i].distMovedy += yMove;
+            if (drops[i].y < this.y) {
+              let yMove = (drops[i].r*drops[i].y + this.r * this.y) / ( drops[i].r + this.r);
+              drops[i].y += yMove;
+              drops[i].distMovedy += yMove;
             } else {
             //this drop adds the other drop to its area
             this.r = sqrt(this.r*this.r + drops[i].r*drops[i].r);
@@ -188,14 +188,14 @@ function raindrop(
             drops[i].r = 0;
             toRemove.push(i);
 
-//             let newX = (drops[i].r*drops[i].x + this.r * this.x) / ( drops[i].r + this.r);
-//             this.xMoved += (newX - this.x);
-//             this.x = newX;
+            let newX = (drops[i].r*drops[i].x + this.r * this.x) / ( drops[i].r + this.r);
+            this.xMoved += (newX - this.x);
+            this.x = newX;
 
-//             if (this.y < drops[i].y) {
-//               let yMove = (drops[i].r*drops[i].y + this.r * this.y) / ( drops[i].r + this.r);
-//               this.y += yMove;
-//               this.distMovedy += yMove;
+            if (this.y < drops[i].y) {
+              let yMove = (drops[i].r*drops[i].y + this.r * this.y) / ( drops[i].r + this.r);
+              this.y += yMove;
+              this.distMovedy += yMove;
             }
         }
       }
