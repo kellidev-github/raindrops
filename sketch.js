@@ -159,7 +159,7 @@ function raindrop(
 
         // drops overlap if the distance between their centers is less than the sum of their diameters
         if (d < 2*(this.r + drops[i].r)) {
-          this.r = max(d/2, this.r+drops[i].r;
+          this.r = max(d/2, this.r+drops[i].r);
           this.x = (this.x + drops[i].x)/2;
           this.y = max(this.y, (this.y + drops[i].y)/2);
           toRemove.push(i);
