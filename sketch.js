@@ -52,7 +52,7 @@ function draw() {
   //fill in watercolor paper bg to full window size
   background(250);
   if( displayText) {
-    fill("#5282a100");
+    fill("#6cbbd4BF");
     textSize(windowHeight / 10);
     text(textInstructions, windowWidth/2, windowHeight/2);
   }
@@ -151,7 +151,7 @@ function raindrop(
   // this.color1 = random(colors1);
   // this.color2 = random(colors2);
 
-  this.color1 = "#5282a100";
+  this.color1 = "#5282a110";
   this.color2 = "#6cbbd4BF";
 
   this.updateSize = function() {
