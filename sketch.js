@@ -158,47 +158,51 @@ function raindrop(
     for (let i = 0; i < drops.length; i++) {
       //compare the location of all other drops to this drop
       if (i != drops.indexOf(this)) {
-        //calculate the distance between the center of the drops minus some overlap buffer
-        var d = dist(this.x, this.y, drops[i].x, drops[i].y) - dropOverlap;
+        //calculate the distance between the center of the drops add radius of each minus overlap
+        var d = dist(this.x, this.y, drops[i].x, drops[i].y) + this.r + drops[i].r - dropOverlap;
 
-        // drops overlap if the distance between their centers is less than the sum of their radii
-        if (d < this.r + drops[i].r) {
+        // drops overlap if the distance between their centers is less than the sum of their diameters
+        if (d < 2*(this.r + drops[i].r)) {
+          this.r = d/2;
+          this.x = (this.x + drops[i].x)/2;
+          this.y = (this.y + drops[i].y)/2;
+          drops[i].r = 0;
+          toRemove.push(i);
+//           //if this drop is smaller than the other drop
+//           if (this.r < drops[i].r) {
+//             //the other drop adds this drop's area to its area
+// //             drops[i].r = sqrt(this.r*this.r + drops[i].r*drops[i].r);
+//             drops[i].r = max(d - drops[i].r, drops[i].r);
+//             //this drop's radius becomes zero
+//             this.r = 0;
+//             toRemove.push(i);
 
-          //if this drop is smaller than the other drop
-          if (this.r < drops[i].r) {
-            //the other drop adds this drop's area to its area
-//             drops[i].r = sqrt(this.r*this.r + drops[i].r*drops[i].r);
-            drops[i].r = d - drops[i].r;
-            //this drop's radius becomes zero
-            this.r = 0;
-            toRemove.push(drops.indexOf(this));
+// //             let newX = (drops[i].r*drops[i].x + this.r * this.x) / ( drops[i].r + this.r);
+// //             drops[i].xMoved += (newX - drops[i].x);
+// //             drops[i].x = newX;
 
-//             let newX = (drops[i].r*drops[i].x + this.r * this.x) / ( drops[i].r + this.r);
-//             drops[i].xMoved += (newX - drops[i].x);
-//             drops[i].x = newX;
+// //             if (drops[i].y < this.y) {
+// //               let yMove = (drops[i].r*drops[i].y + this.r * this.y) / ( drops[i].r + this.r);
+// //               drops[i].y += yMove;
+// //               drops[i].distMovedy += yMove;
+// //             }
+//           } else {
+//             //this drop adds the other drop to its area
+// //             this.r = sqrt(this.r*this.r + drops[i].r*drops[i].r);
+//             this.r = d - this.r;
+//             //this drop's radius becomes zero
+//             drops[i].r = 0;
+//             toRemove.push(i);
 
-//             if (drops[i].y < this.y) {
-//               let yMove = (drops[i].r*drops[i].y + this.r * this.y) / ( drops[i].r + this.r);
-//               drops[i].y += yMove;
-//               drops[i].distMovedy += yMove;
-//             }
-          } else {
-            //this drop adds the other drop to its area
-//             this.r = sqrt(this.r*this.r + drops[i].r*drops[i].r);
-            this.r += d - this.r;
-            //this drop's radius becomes zero
-            drops[i].r = 0;
-            toRemove.push(i);
+// //             let newX = (drops[i].r*drops[i].x + this.r * this.x) / ( drops[i].r + this.r);
+// //             this.xMoved += (newX - this.x);
+// //             this.x = newX;
 
-//             let newX = (drops[i].r*drops[i].x + this.r * this.x) / ( drops[i].r + this.r);
-//             this.xMoved += (newX - this.x);
-//             this.x = newX;
-
-//             if (this.y < drops[i].y) {
-//               let yMove = (drops[i].r*drops[i].y + this.r * this.y) / ( drops[i].r + this.r);
-//               this.y += yMove;
-//               this.distMovedy += yMove;
-//             }
+// //             if (this.y < drops[i].y) {
+// //               let yMove = (drops[i].r*drops[i].y + this.r * this.y) / ( drops[i].r + this.r);
+// //               this.y += yMove;
+// //               this.distMovedy += yMove;
+// //             }
           }
         }
       }
