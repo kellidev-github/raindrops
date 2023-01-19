@@ -52,7 +52,7 @@ function draw() {
   //fill in watercolor paper bg to full window size
   background(250);
   if( displayText) {
-    fill(0);
+    fill("#5282a100");
     textSize(windowHeight / 10);
     text(textInstructions, windowWidth/2, windowHeight/2);
     print(textInstructions);
