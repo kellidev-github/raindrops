@@ -202,9 +202,7 @@ function raindrop(
 //               this.distMovedy += yMove;
             }
           }
-        } else {
-//           print("No overlap");
-        }
+        } 
       }      
     }
   }
