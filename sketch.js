@@ -2,7 +2,7 @@ let textInstructions = "click to start rain";
 let displayText = true;
 let filter; //created water color paper effect
 let maxNewDrops = 5; //maximum # of newdrops generated in a draw cycle
-let dropOverlap = 3;
+let dropOverlap = 1;
 let toRemove = []; //store indices of drops to remove
 
 let makeDrops = false;
