@@ -165,9 +165,9 @@ function raindrop(
           this.distMovedx +=  xNew - this.x;
           this.x = xNew;
           
-          let yNew = max(this.y, (this.y + drops[i].y)/2);
-          this.distMovedy += yNew - this.y;
-          this.y = yNew;
+//           let yNew = max(this.y, (this.y + drops[i].y)/2);
+//           this.distMovedy += yNew - this.y;
+//           this.y = yNew;
           toRemove.push(i);
         }
       }
