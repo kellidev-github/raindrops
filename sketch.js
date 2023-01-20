@@ -223,16 +223,28 @@ function raindrop(
       this.distMovedy += yMove;
       let xMove = random(-1*maxXmove, maxXmove);
       this.distMovedx += xMove;
-      let trailDropR = random(2, maxRadius/5);
-      if (trailDropR < (sqrt(this.xMoved*this.xMoved + this.yMoved*this.yMoved) + 2 * dropOverlap) ) {
-        this.r = this.r - trailDropR;
-        drops.push(new raindrop(this.x, this.y, trailDropR));
-        this.distMovedx = 0;
-        this.distMovedy = 0;
-      }
+      
+      let newR = max(5,random(0.25*this.r));
+      drops.push(new raindrop(this.x, this.y - this.r - newR, newR));
+      this.r += -newR;
+
+//       if (this.r >= maxRadius) {
+//         let newR = this.r - maxRadius;
+//         drops.push(new raindrop(this.x, this.y - this.r - newR, newR));
+//         this.r = maxRadius;
+//       }
+//       let trailDropR = random(2, maxRadius/5);
+//       if (trailDropR < (sqrt(this.xMoved*this.xMoved + this.yMoved*this.yMoved) + 2 * dropOverlap) ) {
+//         this.r = this.r - trailDropR;
+//         drops.push(new raindrop(this.x, this.y, trailDropR));
+//         this.distMovedx = 0;
+//         this.distMovedy = 0;
+//       }
       this.y += yMove;
       this.x += xMove;
     }
+    
+    
 
     if ((this.y - this.r) > windowHeight) {
       toRemove.push(drops.indexOf(this));
