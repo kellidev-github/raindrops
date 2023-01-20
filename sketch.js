@@ -257,7 +257,7 @@ function raindrop(
         this.r = maxRadius;
       } else {
         let newR = random(sqrt(this.distMovedx*this.distMovedx+this.distMovedy*this.distMovedy))-1;
-        if (newR >= 1 && (this.r - newR) > 1)) {
+        if (newR >= 1 && (this.r - newR) > 1) {
           drops.push(new raindrop(this.x - this.r*cos(myAngle),this.y - this.r*sin(myAngle),newR));
           this.r = this.r - newR;
         }
