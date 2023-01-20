@@ -241,6 +241,7 @@ function raindrop(
       if (newR >= 1 && (this.r - newR) > 1) {
         this.r += -newR;
         drops.push(new raindrop(this.x-this.distMovedx, this.y - this.distMovedy, newR));
+        print(newR);
         this.distMovedx = 0;
         this.distMovedy = 0;
       }
