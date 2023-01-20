@@ -217,13 +217,13 @@ function raindrop(
       let yMove = pow(this.r, 0.25);
       this.distMovedy += yMove;
       let xMove = random(-1*maxXmove, maxXmove);
-      this.xMoved += xMove;
+      this.distMovedx += xMove;
       let trailDropR = random(2, maxRadius/5);
       if (trailDropR < (sqrt(this.xMoved*this.xMoved + this.yMoved*this.yMoved) + 2 * dropOverlap) ) {
         this.r = this.r - trailDropR;
         drops.push(new raindrop(this.x, this.y, trailDropR));
-        this.xMoved = 0;
-        this.yMoved = 0;
+        this.distXMoved = 0;
+        this.distYMoved = 0;
       }
       this.y += yMove;
       this.x += xMove;
