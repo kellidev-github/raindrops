@@ -165,9 +165,9 @@ function raindrop(
           this.distMovedx +=  xNew - this.x;
           this.x = xNew;
           
-//           let yNew = max(this.y, (this.y + drops[i].y)/2);
-//           this.distMovedy += yNew - this.y;
-//           this.y = yNew;
+          let yNew = max(this.y, (this.y + drops[i].y)/2);
+          this.distMovedy += yNew - this.y;
+          this.y = yNew;
           toRemove.push(i);
         }
       }
@@ -218,7 +218,7 @@ function raindrop(
 //     }
 
   this.updateLocation = function() {
-    if (this.r > 0.75*maxRadius) {
+    if (this.r > 0.5*maxRadius) {
       let yMove = pow(this.r, 0.5);
       this.distMovedy += yMove;
       let xMove = random(-1*maxXmove, maxXmove);
@@ -229,11 +229,11 @@ function raindrop(
       
       if (this.r >= maxRadius) {
         let newR = this.r - maxRadius;
-        drops.push(new raindrop(this.x, this.y - this.r - newR, newR));
+        drops.push(new raindrop(this.x, this.y - this.r - newR, newR-dropOverlap));
         this.r = maxRadius;
       } else {
         let newR = max(5,random(0.25*this.r));
-        drops.push(new raindrop(this.x, this.y - this.r - newR, newR));
+        drops.push(new raindrop(this.x, this.y - this.r - newR, newR-dropOverlap));
         this.r += -newR;
       }
 //       let trailDropR = random(2, maxRadius/5);
