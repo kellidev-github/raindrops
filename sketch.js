@@ -227,15 +227,23 @@ function raindrop(
       this.y += yMove;
       this.x += xMove;
       
-      if (this.r >= maxRadius) {
-        let newR = this.r - maxRadius;
-        drops.push(new raindrop(this.x, this.y - this.r - newR, newR-dropOverlap));
-        this.r = maxRadius;
-      } else {
-        let newR = max(5,random(0.25*this.r));
-        drops.push(new raindrop(this.x, this.y - this.r - newR, newR-dropOverlap));
-        this.r += -newR;
+//       if (this.r >= maxRadius) {
+//         let newR = this.r - maxRadius;
+//         drops.push(new raindrop(this.x, this.y - this.r - newR, newR-dropOverlap));
+//         this.r = maxRadius;
+//       } else {
+//         let newR = max(5,random(0.25*this.r));
+//         drops.push(new raindrop(this.x, this.y - this.r - newR, newR-dropOverlap));
+//         this.r += -newR;
+//       }
+      
+      let newR = random(sqrt(this.distMovedx*this.distMovedx+this.distMovedy*this.distMovedy))-1;
+      if (newR >= 1) {
+        drops.push(new raindrop(this.x-this.distMovedx, this.y - this.distMovedy, newR));
       }
+      
+
+      
 //       let trailDropR = random(2, maxRadius/5);
 //       if (trailDropR < (sqrt(this.xMoved*this.xMoved + this.yMoved*this.yMoved) + 2 * dropOverlap) ) {
 //         this.r = this.r - trailDropR;
@@ -245,17 +253,10 @@ function raindrop(
 //       }
       
     }
-    
-    
-
+      
     if ((this.y - this.r) > windowHeight) {
       toRemove.push(drops.indexOf(this));
     }
-    
-    for(let i = 0; i < toRemove.length; i++) {
-      drops.splice(toRemove[i], 1);
-    }
-    toRemove = [];
   }
 
 //   this.update = function() {
