@@ -224,6 +224,9 @@ function raindrop(
       let xMove = random(-1*maxXmove, maxXmove);
       this.distMovedx += xMove;
       
+      this.y += yMove;
+      this.x += xMove;
+      
       let newR = max(5,random(0.25*this.r));
       drops.push(new raindrop(this.x, this.y - this.r - newR, newR));
       this.r += -newR;
@@ -240,8 +243,7 @@ function raindrop(
 //         this.distMovedx = 0;
 //         this.distMovedy = 0;
 //       }
-      this.y += yMove;
-      this.x += xMove;
+      
     }
     
     
