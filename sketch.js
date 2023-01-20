@@ -7,7 +7,7 @@ let toRemove = []; //store indices of drops to remove
 
 let makeDrops = false;
 
-let maxRadius = 30;
+let maxRadius = 50;
 
 //furthest distance to the right or left a falling drops moves
 let maxXmove = 1;
