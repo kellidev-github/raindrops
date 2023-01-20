@@ -2,7 +2,7 @@ let textInstructions = "click to start rain";
 let displayText = true;
 let filter; //created water color paper effect
 let maxNewDrops = 5; //maximum # of newdrops generated in a draw cycle
-let dropOverlap = 0;
+let dropOverlap = 3;
 let toRemove = []; //store indices of drops to remove
 
 let makeDrops = false;
@@ -214,11 +214,11 @@ function raindrop(
 
   this.updateLocation = function() {
     if (this.r > 0.75*maxRadius) {
-      let yMove = pow(this.r, 0.75);
+      let yMove = pow(this.r, 0.25);
       this.distMovedy += yMove;
       let xMove = random(-1*maxXmove, maxXmove);
       this.xMoved += xMove;
-      let trailDropR = random(2, 5);
+      let trailDropR = random(2, maxRadius/5);
       if (trailDropR < (sqrt(this.xMoved*this.xMoved + this.yMoved*this.yMoved) + 2 * dropOverlap) ) {
         this.r = this.r - trailDropR;
         drops.push(new raindrop(this.x, this.y, trailDropR));
