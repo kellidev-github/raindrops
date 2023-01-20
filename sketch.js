@@ -7,7 +7,7 @@ let toRemove = []; //store indices of drops to remove
 
 let makeDrops = false;
 
-let maxRadius = 20;
+let maxRadius = 30;
 
 //furthest distance to the right or left a falling drops moves
 let maxXmove = 1;
@@ -72,11 +72,11 @@ function draw() {
       }
   //     print("\N Size Cylcle. Num Drops:" + drops.length); 
     } else {
-  //     for (let drop of drops) {
-  //       //if drops overlap, larger drop increases radius
-  //       //smaller drop is removed
-  //       drop.updateLocation();
-  //     }
+      for (let drop of drops) {
+        //if drops overlap, larger drop increases radius
+        //smaller drop is removed
+        drop.updateLocation();
+      }
   //     print("\N Location Cylcle. Num Drops:" + drops.length); 
     }
 
@@ -213,19 +213,20 @@ function raindrop(
 //     }
 
   this.updateLocation = function() {
-    if (this.r > maxRadius) {
-      let yMove = this.r/maxRadius;
-      this.y += yMove;
+    if (this.r > 0.75*maxRadius) {
+      let yMove = pow(this.r, 0.75);
+      this.xMoved += xMove;
       this.distMovedy += yMove;
       let xMove = random(-1*maxXmove, maxXmove);
-      this.xMoved += xMove;
+      let trailDropR = random(2, 5);
+      if (trailDropR < (sqrt(this.xMoved*this.xMoved + this.yMoved*this.yMoved) + 2 * dropOverlap) ) {
+        this.r = this.r - trailDropR;
+        drops.push(new raindrop(this.x, this.y, trailDropR));
+        this.xMoved = 0;
+        this.yMoved = 0;
+      }
+      this.y += yMove;
       this.x += xMove;
-    }
-
-    let trailDropR = random(2, 5);
-    if (trailDropR < (sqrt(this.xMoved*this.xMoved + this.yMoved*this.yMoved) + 2 * dropOverlap) ) {
-      this.r = sqrt(this.r * this.r - trailDropR * trailDropR);
-      drops.push(new raindrop(this.x + (this.xMoved/2), this.y - this.yMoved/2, trailDropR));
     }
 
     if ((this.y - this.r) > windowHeight) {
