@@ -227,14 +227,14 @@ function raindrop(
       this.y += yMove;
       this.x += xMove;
       
-      let newR = max(5,random(0.25*this.r));
-      drops.push(new raindrop(this.x, this.y - this.r - newR, newR));
-      this.r += -newR;
-
       if (this.r >= maxRadius) {
         let newR = this.r - maxRadius;
         drops.push(new raindrop(this.x, this.y - this.r - newR, newR));
         this.r = maxRadius;
+      } else {
+        let newR = max(5,random(0.25*this.r));
+        drops.push(new raindrop(this.x, this.y - this.r - newR, newR));
+        this.r += -newR;
       }
 //       let trailDropR = random(2, maxRadius/5);
 //       if (trailDropR < (sqrt(this.xMoved*this.xMoved + this.yMoved*this.yMoved) + 2 * dropOverlap) ) {
