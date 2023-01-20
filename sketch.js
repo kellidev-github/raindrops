@@ -166,7 +166,7 @@ function raindrop(
           this.x = xNew;
           
           let yNew = max(this.y, (this.y + drops[i].y)/2);
-          this.distMovedy = yNew - this.y;
+          this.distMovedy += yNew - this.y;
           this.y = yNew;
           toRemove.push(i);
         }
@@ -219,7 +219,7 @@ function raindrop(
 
   this.updateLocation = function() {
     if (this.r > 0.75*maxRadius) {
-      let yMove = pow(this.r, 0.25);
+      let yMove = pow(this.r, 0.5);
       this.distMovedy += yMove;
       let xMove = random(-1*maxXmove, maxXmove);
       this.distMovedx += xMove;
