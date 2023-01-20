@@ -215,9 +215,9 @@ function raindrop(
   this.updateLocation = function() {
     if (this.r > 0.75*maxRadius) {
       let yMove = pow(this.r, 0.75);
-      this.xMoved += xMove;
       this.distMovedy += yMove;
       let xMove = random(-1*maxXmove, maxXmove);
+      this.xMoved += xMove;
       let trailDropR = random(2, 5);
       if (trailDropR < (sqrt(this.xMoved*this.xMoved + this.yMoved*this.yMoved) + 2 * dropOverlap) ) {
         this.r = this.r - trailDropR;
