@@ -57,10 +57,31 @@ function draw() {
     text(textInstructions, windowWidth/2, windowHeight/2);
   }
 
-  if( makeDrops) {
-    if(cycle % 2 == 0) {
-      //create several new raindrops as long as drops
+//   if( makeDrops) {
+//     if(cycle % 2 == 0) {
+//       //create several new raindrops as long as drops
 
+//       for (let i = 0; i < random(maxNewDrops); i++) {
+//         drops.push(new raindrop());
+//       }
+      
+//       for (let drop of drops) {
+//         //if drops overlap, larger drop increases radius
+//         //smaller drop is removed
+//         drop.updateSize();
+//       }
+//   //     print("\N Size Cylcle. Num Drops:" + drops.length); 
+//     } else {
+//       for (let drop of drops) {
+//         //if drops overlap, larger drop increases radius
+//         //smaller drop is removed
+//         drop.updateLocation();
+//       }
+//   //     print("\N Location Cylcle. Num Drops:" + drops.length); 
+//     }
+    
+    if( makeDrops) {
+      //create several new raindrops as long as drops
       for (let i = 0; i < random(maxNewDrops); i++) {
         drops.push(new raindrop());
       }
@@ -69,19 +90,10 @@ function draw() {
         //if drops overlap, larger drop increases radius
         //smaller drop is removed
         drop.updateSize();
-      }
-  //     print("\N Size Cylcle. Num Drops:" + drops.length); 
-    } else {
-      for (let drop of drops) {
-        //if drops overlap, larger drop increases radius
-        //smaller drop is removed
         drop.updateLocation();
       }
-  //     print("\N Location Cylcle. Num Drops:" + drops.length); 
-    }
-
-
   }
+    
   for (let drop of drops) {
     // draw the drop
     // save starting coordinates
@@ -153,7 +165,7 @@ function raindrop(
   this.updateSize = function() {
     for (let i = 0; i < drops.length; i++) {
       //compare the location of all other drops to this drop
-      if (i != drops.indexOf(this)) {
+      if (i != drops.indexOf(this) && drops[i].r > 0) {
         //calculate the distance between the center of the drops add radius of each minus overlap
         var d = dist(this.x, this.y, drops[i].x, drops[i].y) + this.r + drops[i].r - dropOverlap;
 
