@@ -249,14 +249,30 @@ function raindrop(
 //         this.r += -newR;
 //       }
       
-      let newR = random(sqrt(this.distMovedx*this.distMovedx+this.distMovedy*this.distMovedy)-this.r)-1;
-      if (newR >= 1 && (this.r - newR) > 1) {
-        this.r += -newR;
-        drops.push(new raindrop(this.x-this.distMovedx, this.y - this.distMovedy, newR));
-        print(newR);
-        this.distMovedx = 0;
-        this.distMovedy = 0;
+      let myAngle = atan(this.distMovedy/this.distMovedx);
+      
+      if (this.r > maxRadius) {
+        let newR = this.r - maxRadius;       
+        drops.push(new raindrop(this.x - this.r*cos(myAngle),this.y - this.r*sin(myAngle),newR));
+        this.r = maxRadius;
+      } else {
+        let newR = random(sqrt(this.distMovedx*this.distMovedx+this.distMovedy*this.distMovedy))-1;
+        if (newR >= 1 && (this.r - newR) > 1)) {
+          drops.push(new raindrop(this.x - this.r*cos(myAngle),this.y - this.r*sin(myAngle),newR));
+          this.r = this.r - newR;
+        }
       }
+      this.distMovedx = 0;
+      this.distMovedy = 0;
+        
+//       let newR = random(sqrt(this.distMovedx*this.distMovedx+this.distMovedy*this.distMovedy))-1;
+//       if (newR >= 1 && (this.r - newR) > 1) {
+//         this.r += -newR;
+//         drops.push(new raindrop(this.x-this.distMovedx, this.y - this.distMovedy, newR));
+//         print(newR);
+//         this.distMovedx = 0;
+//         this.distMovedy = 0;
+//       }
       
 
       
