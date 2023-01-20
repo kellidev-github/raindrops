@@ -238,7 +238,8 @@ function raindrop(
 //       }
       
       let newR = random(sqrt(this.distMovedx*this.distMovedx+this.distMovedy*this.distMovedy))-1;
-      if (newR >= 1) {
+      if (newR >= 1 && (this.r - newR) > 1) {
+        this.r += -newR;
         drops.push(new raindrop(this.x-this.distMovedx, this.y - this.distMovedy, newR));
         this.distMovedx = 0;
         this.distMovedy = 0;
